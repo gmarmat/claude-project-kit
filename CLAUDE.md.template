@@ -24,6 +24,10 @@
 <!-- Example: "Use TypeScript strict mode." -->
 <!-- Example: "All components use Shadcn/UI patterns." -->
 <!-- Example: "CSS via Tailwind + custom tokens (--prefix-*)." -->
+<!-- CUSTOMIZE: If you adopted the kit's design system, add: -->
+<!-- "Use design system tokens from design/globals.css — --ext-* prefix (or renamed). -->
+<!--  Never hardcode color values. Use Layer 2 semantic tokens in components." -->
+<!-- "Dark/light mode: use data-theme='dark'|'light' on <html>, not .dark class." -->
 
 ---
 

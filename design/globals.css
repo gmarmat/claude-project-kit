@@ -1,0 +1,856 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+
+/*
+ * Claude Project Kit — Design System v1.0
+ * 3-layer token architecture: Primitives → Semantic → Component
+ * Prefix: --ext-* (rename to --yourapp-* or --ds-* for your project)
+ *
+ * CUSTOMIZE: Find and replace `--ext-` with your own prefix.
+ * Example: --ext-primary → --myapp-primary
+ */
+
+/* ============================================================
+   Dark mode variant: data-theme attribute (not .dark class)
+   ============================================================ */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+/* ============================================================
+   Tailwind v4 @theme — map Shadcn + ext tokens into Tailwind
+   ============================================================ */
+@theme inline {
+  /* Shadcn compatibility — map Shadcn vars to Tailwind colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* ext-* color tokens for Tailwind utilities */
+  --color-ext-primary: var(--ext-primary);
+  --color-ext-primary-hover: var(--ext-primary-hover);
+  --color-ext-primary-subtle: var(--ext-primary-subtle);
+  --color-ext-success: var(--ext-success);
+  --color-ext-success-subtle: var(--ext-success-subtle);
+  --color-ext-warning: var(--ext-warning);
+  --color-ext-warning-subtle: var(--ext-warning-subtle);
+  --color-ext-danger: var(--ext-danger);
+  --color-ext-danger-subtle: var(--ext-danger-subtle);
+  --color-ext-info: var(--ext-info);
+  --color-ext-info-subtle: var(--ext-info-subtle);
+  --color-ext-bg-primary: var(--ext-bg-primary);
+  --color-ext-bg-secondary: var(--ext-bg-secondary);
+  --color-ext-bg-tertiary: var(--ext-bg-tertiary);
+  --color-ext-text-primary: var(--ext-text-primary);
+  --color-ext-text-secondary: var(--ext-text-secondary);
+  --color-ext-text-muted: var(--ext-text-muted);
+  --color-ext-text-inverse: var(--ext-text-inverse);
+  --color-ext-border-default: var(--ext-border-default);
+  --color-ext-border-muted: var(--ext-border-muted);
+  --color-ext-border-strong: var(--ext-border-strong);
+  --color-ext-card-bg: var(--ext-card-bg);
+  --color-ext-card-border: var(--ext-card-border);
+
+  /* Typography — map to Tailwind font-family */
+  --font-sans: var(--ext-font-sans);
+  --font-mono: var(--ext-font-mono);
+}
+
+/* ============================================================
+   LAYER 1: Color Primitives
+   ============================================================ */
+:root {
+  /* --- Blue Scale (Primary — Brand/Action) --- */
+  --ext-blue-50: #eff6ff;
+  --ext-blue-100: #dbeafe;
+  --ext-blue-200: #bfdbfe;
+  --ext-blue-300: #93c5fd;
+  --ext-blue-400: #60a5fa;
+  --ext-blue-500: #3b82f6;
+  --ext-blue-600: #2563eb;
+  --ext-blue-700: #1d4ed8;
+  --ext-blue-800: #1e40af;
+  --ext-blue-900: #1e3a8a;
+
+  /* --- Gray Scale (Neutrals) --- */
+  --ext-gray-50: #f9fafb;
+  --ext-gray-100: #f3f4f6;
+  --ext-gray-200: #e5e7eb;
+  --ext-gray-300: #d1d5db;
+  --ext-gray-400: #9ca3af;
+  --ext-gray-500: #6b7280;
+  --ext-gray-600: #4b5563;
+  --ext-gray-700: #374151;
+  --ext-gray-800: #1f2937;
+  --ext-gray-900: #111827;
+
+  /* --- Green Scale (Success/Positive) --- */
+  --ext-green-50: #f0fdf4;
+  --ext-green-100: #dcfce7;
+  --ext-green-500: #22c55e;
+  --ext-green-600: #16a34a;
+  --ext-green-700: #15803d;
+
+  /* --- Yellow/Amber Scale (Warning/Pending) --- */
+  --ext-yellow-50: #fefce8;
+  --ext-yellow-100: #fef3c7;
+  --ext-yellow-400: #fbbf24;
+  --ext-yellow-500: #f59e0b;
+  --ext-yellow-600: #d97706;
+  --ext-yellow-700: #a16207;
+
+  /* --- Orange Scale (Accent/Escalation) --- */
+  --ext-orange-50: #fff7ed;
+  --ext-orange-100: #ffedd5;
+  --ext-orange-400: #fb923c;
+  --ext-orange-500: #f97316;
+  --ext-orange-600: #ea580c;
+
+  /* --- Red Scale (Danger/Critical) --- */
+  --ext-red-50: #fef2f2;
+  --ext-red-100: #fee2e2;
+  --ext-red-400: #f87171;
+  --ext-red-500: #ef4444;
+  --ext-red-600: #dc2626;
+  --ext-red-700: #b91c1c;
+
+  /* --- Purple Scale (Info/Tertiary) --- */
+  --ext-purple-50: #faf5ff;
+  --ext-purple-100: #f3e8ff;
+  --ext-purple-400: #c084fc;
+  --ext-purple-500: #a855f7;
+  --ext-purple-600: #9333ea;
+
+  /* --- Cyan Scale (Info/Neutral) --- */
+  --ext-cyan-50: #ecfeff;
+  --ext-cyan-400: #22d3ee;
+  --ext-cyan-500: #06b6d4;
+  --ext-cyan-600: #0891b2;
+
+  /* --- Spacing --- */
+  --ext-spacing-xs: 0.25rem;
+  --ext-spacing-sm: 0.5rem;
+  --ext-spacing-md: 1rem;
+  --ext-spacing-lg: 1.5rem;
+  --ext-spacing-xl: 2rem;
+  --ext-spacing-2xl: 3rem;
+
+  /* --- Border Radius --- */
+  --ext-radius-sm: 0.25rem;
+  --ext-radius-md: 0.5rem;
+  --ext-radius-lg: 0.75rem;
+  --ext-radius-xl: 1rem;
+  --ext-radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --ext-transition-fast: 150ms ease;
+  --ext-transition-normal: 250ms ease;
+  --ext-transition-slow: 350ms ease;
+
+  /* --- Typography --- */
+  --ext-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ext-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --ext-text-xs: 0.75rem;
+  --ext-text-sm: 0.875rem;
+  --ext-text-base: 1rem;
+  --ext-text-lg: 1.125rem;
+  --ext-text-xl: 1.25rem;
+  --ext-text-2xl: 1.5rem;
+  --ext-text-3xl: 1.875rem;
+
+  /* --- Shadcn base radius --- */
+  --radius: 0.625rem;
+}
+
+/* ============================================================
+   LAYER 2: Semantic Tokens — Light Theme
+   :root provides defaults when data-theme is not yet set
+   (prevents flash during React hydration)
+   ============================================================ */
+:root, [data-theme="light"] {
+  /* Primary */
+  --ext-primary: var(--ext-blue-600);
+  --ext-primary-hover: var(--ext-blue-700);
+  --ext-primary-subtle: var(--ext-blue-50);
+
+  /* Status */
+  --ext-success: var(--ext-green-700);
+  --ext-success-subtle: var(--ext-green-50);
+  --ext-warning: var(--ext-yellow-700);
+  --ext-warning-subtle: var(--ext-yellow-50);
+  --ext-danger: var(--ext-red-600);
+  --ext-danger-subtle: var(--ext-red-50);
+  --ext-info: var(--ext-cyan-600);
+  --ext-info-subtle: var(--ext-cyan-50);
+
+  /* Backgrounds */
+  --ext-bg-primary: #ffffff;
+  --ext-bg-secondary: var(--ext-gray-50);
+  --ext-bg-tertiary: var(--ext-gray-100);
+
+  /* Text */
+  --ext-text-primary: var(--ext-gray-900);
+  --ext-text-secondary: var(--ext-gray-600);
+  --ext-text-muted: var(--ext-gray-500);
+  --ext-text-inverse: #ffffff;
+
+  /* Borders */
+  --ext-border-default: var(--ext-gray-200);
+  --ext-border-muted: var(--ext-gray-100);
+  --ext-border-strong: var(--ext-gray-300);
+
+  /* Cards */
+  --ext-card-bg: #ffffff;
+  --ext-card-border: var(--ext-gray-200);
+  --ext-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --ext-card-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Forms */
+  --ext-input-bg: #ffffff;
+  --ext-input-border: var(--ext-gray-400);
+  --ext-input-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.25);
+
+  /* Focus — WCAG 2.4.7 */
+  --ext-focus-ring: 0 0 0 2px var(--ext-bg-primary), 0 0 0 4px var(--ext-primary);
+  --ext-focus-ring-offset: 2px;
+  --ext-focus-color: var(--ext-primary);
+
+  /* Shadcn compatibility — map to Shadcn expected vars */
+  --background: #ffffff;
+  --foreground: var(--ext-gray-900);
+  --card: #ffffff;
+  --card-foreground: var(--ext-gray-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--ext-gray-900);
+  --primary: var(--ext-blue-600);
+  --primary-foreground: #ffffff;
+  --secondary: var(--ext-gray-100);
+  --secondary-foreground: var(--ext-gray-900);
+  --muted: var(--ext-gray-100);
+  --muted-foreground: var(--ext-gray-500);
+  --accent: var(--ext-gray-100);
+  --accent-foreground: var(--ext-gray-900);
+  --destructive: var(--ext-red-600);
+  --border: var(--ext-gray-200);
+  --input: var(--ext-gray-200);
+  --ring: var(--ext-blue-600);
+  --chart-1: var(--ext-blue-500);
+  --chart-2: var(--ext-green-500);
+  --chart-3: var(--ext-yellow-500);
+  --chart-4: var(--ext-purple-500);
+  --chart-5: var(--ext-orange-500);
+  --chart-6: var(--ext-red-500);
+  --chart-7: var(--ext-cyan-500);
+  --chart-8: var(--ext-blue-400);
+  --chart-9: var(--ext-gray-500);
+  --ext-chart-primary: var(--ext-blue-500);
+  --ext-chart-secondary: var(--ext-green-500);
+  --ext-chart-tertiary: #94a3b8;
+  --sidebar: var(--ext-gray-50);
+  --sidebar-foreground: var(--ext-gray-900);
+  --sidebar-primary: var(--ext-blue-600);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--ext-gray-100);
+  --sidebar-accent-foreground: var(--ext-gray-900);
+  --sidebar-border: var(--ext-gray-200);
+  --sidebar-ring: var(--ext-blue-600);
+}
+
+/* ============================================================
+   LAYER 2: Semantic Tokens — Dark Theme
+   ============================================================ */
+[data-theme="dark"] {
+  /* Primary */
+  --ext-primary: var(--ext-blue-500);
+  --ext-primary-hover: var(--ext-blue-400);
+  --ext-primary-subtle: rgba(59, 130, 246, 0.15);
+
+  /* Status */
+  --ext-success: var(--ext-green-500);
+  --ext-success-subtle: rgba(34, 197, 94, 0.15);
+  --ext-warning: var(--ext-yellow-400);
+  --ext-warning-subtle: rgba(251, 191, 36, 0.15);
+  --ext-danger: var(--ext-red-500);
+  --ext-danger-subtle: rgba(239, 68, 68, 0.15);
+  --ext-info: var(--ext-cyan-400);
+  --ext-info-subtle: rgba(34, 211, 238, 0.15);
+
+  /* Backgrounds */
+  --ext-bg-primary: #0f0f0f;
+  --ext-bg-secondary: #171717;
+  --ext-bg-tertiary: #262626;
+
+  /* Text */
+  --ext-text-primary: #fafafa;
+  --ext-text-secondary: #a1a1aa;
+  --ext-text-muted: #8b8b94;
+  --ext-text-inverse: #0f0f0f;
+
+  /* Borders */
+  --ext-border-default: #3f3f46;
+  --ext-border-muted: #27272a;
+  --ext-border-strong: #52525b;
+
+  /* Cards */
+  --ext-card-bg: #1c1c1c;
+  --ext-card-border: #3f3f46;
+  --ext-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --ext-card-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+  /* Forms */
+  --ext-input-bg: #262626;
+  --ext-input-border: #71717a;
+  --ext-input-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.35);
+
+  /* Focus — WCAG 2.4.7 */
+  --ext-focus-ring: 0 0 0 2px var(--ext-bg-primary), 0 0 0 4px var(--ext-primary);
+  --ext-focus-ring-offset: 2px;
+  --ext-focus-color: var(--ext-primary);
+
+  /* Shadcn compatibility */
+  --background: #0f0f0f;
+  --foreground: #fafafa;
+  --card: #1c1c1c;
+  --card-foreground: #fafafa;
+  --popover: #1c1c1c;
+  --popover-foreground: #fafafa;
+  --primary: var(--ext-blue-500);
+  --primary-foreground: #0f0f0f;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #8b8b94;
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+  --destructive: var(--ext-red-500);
+  --border: #3f3f46;
+  --input: #3f3f46;
+  --ring: var(--ext-blue-500);
+  --chart-1: var(--ext-blue-400);
+  --chart-2: var(--ext-green-500);
+  --chart-3: var(--ext-yellow-400);
+  --chart-4: var(--ext-purple-400);
+  --chart-5: var(--ext-orange-400);
+  --chart-6: var(--ext-red-400);
+  --chart-7: var(--ext-cyan-400);
+  --chart-8: var(--ext-blue-300);
+  --chart-9: var(--ext-gray-400);
+  --ext-chart-primary: var(--ext-blue-400);
+  --ext-chart-secondary: var(--ext-green-500);
+  --ext-chart-tertiary: #64748b;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: var(--ext-blue-500);
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #3f3f46;
+  --sidebar-ring: var(--ext-blue-500);
+}
+
+/* ============================================================
+   Reduced Motion (WCAG 2.3.1)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ext-transition-fast: 0ms;
+    --ext-transition-normal: 0ms;
+    --ext-transition-slow: 0ms;
+  }
+}
+
+/* ============================================================
+   Utility Animations
+   ============================================================ */
+
+/* Slide up + fade in (feed items, notifications) */
+@keyframes ext-stream-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ext-animate-slide-in {
+  animation: ext-stream-slide-in 0.4s ease-out both;
+}
+
+/* Ticker — infinite horizontal scroll */
+@keyframes ext-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ext-animate-ticker {
+  animation: ext-ticker-scroll 20s linear infinite;
+}
+
+/* Typing indicator dots */
+@keyframes ext-dot-bounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+}
+
+.ext-animate-dot-bounce {
+  animation: ext-dot-bounce 1s ease-in-out infinite;
+}
+
+/* Float up (notifications, toasts) */
+@keyframes ext-float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-380px);
+  }
+}
+
+.ext-animate-float-up {
+  animation: ext-float-up 6s ease-out both;
+}
+
+/* SVG donut draw */
+@keyframes ext-donut-draw {
+  from {
+    stroke-dashoffset: 251.3; /* 2 * PI * 40 */
+  }
+}
+
+.ext-animate-donut-draw {
+  animation: ext-donut-draw 1s ease-out both;
+}
+
+/* Reduced motion: disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  .ext-animate-slide-in,
+  .ext-animate-ticker,
+  .ext-animate-dot-bounce,
+  .ext-animate-float-up,
+  .ext-animate-donut-draw {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Focus Utility (WCAG 2.4.7)
+   ============================================================ */
+.ext-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+.ext-focus-ring:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ============================================================
+   Base Layer
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================================
+   LAYER 3: Component Tokens — Generic reusable patterns
+   CUSTOMIZE: Rename class prefix --ext- to your project prefix.
+   ============================================================ */
+
+/* --- KPI Cards --- */
+.ext-kpi-card {
+  background-color: var(--ext-card-bg);
+  border: 1px solid var(--ext-card-border);
+  border-radius: var(--ext-radius-lg);
+  padding: 1.25rem;
+  transition: all var(--ext-transition-normal);
+}
+
+.ext-kpi-card:hover {
+  border-color: var(--ext-primary);
+  box-shadow: var(--ext-card-shadow-hover);
+}
+
+.ext-kpi-card:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+.ext-kpi-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.ext-kpi-icon.primary { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.ext-kpi-icon.danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.ext-kpi-icon.success { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+.ext-kpi-icon.warning { background: rgba(249, 115, 22, 0.1); color: #f97316; }
+
+.ext-kpi-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ext-text-primary);
+}
+
+.ext-kpi-label {
+  font-size: var(--ext-text-sm);
+  color: var(--ext-text-secondary);
+}
+
+/* --- KPI Delta Indicators --- */
+.ext-kpi-delta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--ext-radius-full);
+  font-size: var(--ext-text-xs);
+  font-weight: 600;
+}
+
+.ext-kpi-delta.positive {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--ext-green-600);
+}
+
+.ext-kpi-delta.negative {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--ext-red-600);
+}
+
+.ext-kpi-delta.neutral {
+  background: var(--ext-bg-tertiary);
+  color: var(--ext-text-muted);
+}
+
+/* --- Status Badges --- */
+.ext-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--ext-radius-full);
+  font-size: var(--ext-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.ext-badge[href]:focus-visible,
+.ext-badge[role="button"]:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+/* Semantic badges */
+.ext-badge--success { background-color: var(--ext-success-subtle); color: var(--ext-success); }
+.ext-badge--warning { background-color: var(--ext-warning-subtle); color: var(--ext-warning); }
+.ext-badge--danger { background-color: var(--ext-danger-subtle); color: var(--ext-danger); }
+.ext-badge--info { background-color: var(--ext-info-subtle); color: var(--ext-info); }
+.ext-badge--neutral { background-color: var(--ext-bg-tertiary); color: var(--ext-text-secondary); }
+.ext-badge--primary { background-color: var(--ext-primary-subtle); color: var(--ext-primary); }
+
+/* Role badges */
+.ext-badge--super-admin { background-color: var(--ext-danger-subtle); color: var(--ext-danger); }
+.ext-badge--admin { background-color: var(--ext-primary-subtle); color: var(--ext-primary); }
+.ext-badge--viewer { background-color: var(--ext-success-subtle); color: var(--ext-success); }
+
+/* --- Status Cards with Left Border Accent --- */
+.ext-status-card {
+  background-color: var(--ext-card-bg);
+  border: 1px solid var(--ext-card-border);
+  border-radius: 10px;
+  padding: var(--ext-spacing-md);
+  transition: all var(--ext-transition-normal);
+}
+
+.ext-status-card:hover {
+  box-shadow: var(--ext-card-shadow-hover);
+}
+
+.ext-status-card:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+.ext-status-card.status-success { border-left: 3px solid var(--ext-green-500); }
+.ext-status-card.status-warning { border-left: 3px solid var(--ext-yellow-500); }
+.ext-status-card.status-danger { border-left: 3px solid var(--ext-red-500); }
+.ext-status-card.status-info { border-left: 3px solid var(--ext-blue-500); }
+.ext-status-card.status-neutral { border-left: 3px solid var(--ext-gray-400); }
+
+/* --- Data Table --- */
+.ext-data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ext-data-table thead th {
+  text-align: left;
+  padding: 0.75rem var(--ext-spacing-md);
+  font-size: var(--ext-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ext-text-secondary);
+  background-color: var(--ext-bg-tertiary);
+  border-bottom: 2px solid var(--ext-border-default);
+  white-space: nowrap;
+}
+
+.ext-data-table tbody td {
+  padding: 0.875rem var(--ext-spacing-md);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--ext-border-muted);
+  font-size: var(--ext-text-sm);
+  color: var(--ext-text-primary);
+}
+
+.ext-data-table tbody tr:hover td {
+  background-color: var(--ext-bg-secondary);
+}
+
+.ext-data-table tbody tr:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+.ext-data-table .amount {
+  font-family: var(--ext-font-mono);
+  text-align: right;
+}
+
+.ext-data-table--compact thead th {
+  padding: 0.5rem 0.625rem;
+}
+
+.ext-data-table--compact tbody td {
+  padding: 0.5rem 0.625rem;
+}
+
+/* --- Filter Bar & Filter Pills --- */
+.ext-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ext-filter-group {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  padding-right: var(--ext-spacing-md);
+  border-right: 1px solid var(--ext-border-default);
+}
+
+.ext-filter-group:last-child {
+  border-right: none;
+}
+
+.ext-filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ext-text-muted);
+  margin-right: 0.25rem;
+}
+
+.ext-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--ext-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ext-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--ext-transition-fast);
+}
+
+.ext-filter-pill:hover {
+  background: var(--ext-bg-tertiary);
+  color: var(--ext-text-primary);
+}
+
+.ext-filter-pill:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+}
+
+.ext-filter-pill.active {
+  background: var(--ext-primary);
+  color: #ffffff;
+}
+
+.ext-filter-pill.active:focus-visible {
+  box-shadow: 0 0 0 2px var(--ext-bg-primary), 0 0 0 4px #ffffff;
+}
+
+/* --- Empty State --- */
+.ext-empty-state {
+  text-align: center;
+  padding: var(--ext-spacing-2xl) var(--ext-spacing-xl);
+  border: 2px dashed var(--ext-border-default);
+  border-radius: var(--ext-radius-lg);
+  background-color: var(--ext-bg-secondary);
+}
+
+.ext-empty-state .icon {
+  font-size: 3rem;
+  color: var(--ext-text-muted);
+  margin-bottom: var(--ext-spacing-md);
+}
+
+.ext-empty-state h5 {
+  color: var(--ext-text-primary);
+  margin-bottom: var(--ext-spacing-sm);
+}
+
+.ext-empty-state p {
+  color: var(--ext-text-secondary);
+}
+
+/* --- Upload Zone --- */
+.ext-upload-zone {
+  border: 2px dashed var(--ext-border-default);
+  border-radius: var(--ext-radius-lg);
+  padding: var(--ext-spacing-2xl);
+  text-align: center;
+  background-color: var(--ext-bg-secondary);
+  cursor: pointer;
+  transition: all var(--ext-transition-normal);
+}
+
+.ext-upload-zone:hover,
+.ext-upload-zone.drag-over {
+  border-color: var(--ext-primary);
+  background-color: var(--ext-primary-subtle);
+}
+
+.ext-upload-zone:focus-visible {
+  outline: none;
+  box-shadow: var(--ext-focus-ring);
+  border-color: var(--ext-primary);
+}
+
+/* --- Timeline --- */
+.ext-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.ext-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ext-border-default);
+}
+
+.ext-timeline-item {
+  position: relative;
+  padding-bottom: var(--ext-spacing-md);
+}
+
+.ext-timeline-dot {
+  position: absolute;
+  left: -1.25rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ext-primary);
+  border: 2px solid var(--ext-card-bg);
+}
+
+.ext-timeline-dot.success { background: var(--ext-success); }
+.ext-timeline-dot.warning { background: var(--ext-warning); }
+.ext-timeline-dot.danger { background: var(--ext-danger); }
+.ext-timeline-dot.neutral { background: var(--ext-gray-400); }
+
+/* ============================================================
+   LAYER 3: Domain-Specific Tokens (YOUR APP)
+   CUSTOMIZE: Add your app's domain tokens here.
+   Example: status colors, category colors, entity-specific badges.
+   ============================================================ */
+
+/*
+:root {
+  --ext-cat-active: var(--ext-green-500);
+  --ext-cat-pending: var(--ext-yellow-500);
+  --ext-cat-inactive: var(--ext-gray-400);
+}
+
+.ext-badge--active { background-color: var(--ext-success-subtle); color: var(--ext-success); }
+.ext-badge--pending { background-color: var(--ext-warning-subtle); color: var(--ext-warning); }
+.ext-badge--inactive { background-color: var(--ext-bg-tertiary); color: var(--ext-text-muted); }
+*/

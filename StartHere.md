@@ -43,6 +43,8 @@ Confirm these exist (they ship with the kit):
 .claude/skills/localcompact/SKILL.md
 .claude/skills/l3/SKILL.md
 .claude/skills/audit/SKILL.md
+design/globals.css
+design/design-system.md
 docs/arch.md.template
 docs/PRD.md.template
 docs/features/_template.md
@@ -77,7 +79,24 @@ Tell the user:
 >
 > Set these up now if you know your stack. You can add them later.
 
-### 1.4 CLAUDE.md Setup
+### 1.4 Design System (Optional)
+
+Ask the user:
+
+> **This kit includes a pre-built design system** (`design/globals.css` + `design/design-system.md`):
+> - 3-layer token architecture: Primitives → Semantic → Component
+> - Light/dark mode via `data-theme` attribute
+> - WCAG 2.1 AA compliant
+> - Tailwind CSS v4 + Shadcn/UI compatible
+> - Generic components: KPI cards, badges, data tables, filter pills, timeline, empty states
+>
+> **Do you want to use this design system for your project?**
+> - **Yes** → Copy `design/globals.css` to your app's CSS entry point (e.g., `app/globals.css`). Rename `--ext-` prefix to your project prefix if desired.
+> - **No** → Skip. The `design/` folder can be deleted.
+
+If yes, note it in `CLAUDE.md` (see next step).
+
+### 1.5 CLAUDE.md Setup
 
 Rename `CLAUDE.md.template` to `CLAUDE.md`. Walk through project-specific rules:
 
@@ -89,6 +108,8 @@ Rename `CLAUDE.md.template` to `CLAUDE.md`. Walk through project-specific rules:
 > 6. **Naming conventions** — files, components, DB tables?
 
 Fill in what the user knows. Skip unknowns — they get filled in after PRD review.
+
+If the user adopted the design system in step 1.4, add a `Design System` section to CLAUDE.md noting the token prefix and `data-theme` dark mode convention.
 
 **Mark Phase 1 done in the Progress Tracker. Move to Phase 2.**
 

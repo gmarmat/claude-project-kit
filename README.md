@@ -28,6 +28,21 @@ Skills are Claude Code's slash commands. Copy these into your project's `.claude
 | `docs/PRD.md.template` | Product requirements — problem, users, features, phases, open questions |
 | `docs/features/_template.md` | Per-feature deep-dives — design, code map, decisions, gotchas |
 
+### 1 Design System (opt-in)
+
+| File | What It Is |
+|------|-----------|
+| `design/globals.css` | Production-ready CSS — 3-layer token system, Tailwind v4 + Shadcn/UI, light/dark mode |
+| `design/design-system.md` | Reference doc — all tokens, component classes, usage examples |
+
+During `StartHere.md` onboarding, Claude will ask if you want to adopt the design system. If yes, copy `globals.css` to your app's CSS entry point and get instant access to:
+- 8 color scales, semantic token layer, WCAG 2.1 AA focus rings
+- KPI cards, status badges, data tables, filter pills, timeline, empty states, upload zones
+- Tailwind utility classes for all tokens (`text-ext-primary`, `bg-ext-bg-secondary`, etc.)
+- Light + dark mode via `data-theme` attribute (works with Shadcn/UI)
+
+Rename the `--ext-` token prefix to your project prefix at any time.
+
 ### 1 Bootstrap Script
 
 `StartHere.md` — a 5-phase guided setup that Claude Code follows sequentially:
@@ -92,6 +107,9 @@ claude
 ```
 my-project/
   CLAUDE.md                     # Project rules (from template)
+  design/                       # Design system (opt-in)
+    globals.css                 # CSS tokens + components — copy to app/globals.css
+    design-system.md            # Token reference + usage examples
   docs/
     PRD.md                      # Your product requirements
     arch.md                     # Architecture index (<300 lines)
