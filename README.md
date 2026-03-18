@@ -61,9 +61,26 @@ Click **"Use this template"** on GitHub → creates a fresh repo with all files 
 
 ### Option C: Copy manually
 
+**Mac / Linux:**
 ```bash
 cp -r claude-project-kit/ my-project/
 cd my-project/
+git init
+claude
+```
+
+**Windows (PowerShell):**
+```powershell
+Copy-Item -Recurse claude-project-kit\ my-project\
+cd my-project
+git init
+claude
+```
+
+**Windows (Command Prompt):**
+```cmd
+xcopy /E /I claude-project-kit my-project
+cd my-project
 git init
 claude
 ```
@@ -131,13 +148,29 @@ This kit is designed with security as a first-class concern:
 
 ## Requirements
 
-- [Claude Code](https://claude.ai/claude-code) (CLI)
+- [Claude Code](https://claude.ai/claude-code) (CLI) — runs on Mac, Linux, and Windows
 - A project idea
 
 Optional but recommended:
 - Git + GitHub CLI (`gh`)
 - Supabase MCP: `claude mcp add supabase -- npx -y @supabase/mcp-server`
 - Railway MCP: `claude mcp add railway -- npx -y @anthropic-ai/claude-code-railway-mcp`
+
+### Windows Notes
+
+Claude Code runs natively on Windows. A few things to keep in mind:
+
+| Situation | Windows Equivalent |
+|-----------|-------------------|
+| `mkdir -p docs/plans` | `mkdir docs\plans` (PowerShell/cmd both work) |
+| `rm StartHere.md` | `del StartHere.md` (cmd) or `Remove-Item StartHere.md` (PowerShell) |
+| `mv file dest/` | `move file dest\` (cmd) or `Move-Item file dest\` (PowerShell) |
+| File paths in docs | Use forward slashes in markdown — they render correctly everywhere |
+| SSH to other machines | OpenSSH is built into Windows 10/11 — `ssh user@host` works in PowerShell and cmd |
+| Git commands | Identical on all platforms |
+| `claude` CLI | Identical on all platforms — install via npm |
+
+> **Tip:** PowerShell is preferred over cmd for working with this kit — better unicode support and tab completion.
 
 ---
 
