@@ -1,0 +1,21 @@
+# Environment files - NEVER commit these
+.env
+.env.local
+.env.*.local
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local settings (user-specific, not for sharing)
+.claude/settings.local.json
+
+# Archives
+docs/meta/StartHere.md.archive
