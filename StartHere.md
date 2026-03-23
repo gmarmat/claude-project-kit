@@ -236,13 +236,35 @@ Available commands:
 Ready to build. What feature should we start with?
 ```
 
-### 5.2 Recommended Workflow
+### 5.2 Update GitHub Repo Info
+
+If a GitHub repo was created in Phase 1, update it to reflect the actual project:
+
+1. **Write a README.md** — Replace the kit README with a project-specific one:
+   - What the project does (1-2 sentences)
+   - Tech stack table
+   - Architecture highlights (3-5 bullet points on interesting technical decisions)
+   - Project structure overview
+   - Keep it public-friendly — no internal jargon, no controversial framing
+
+2. **Set repo description** — One-line summary for the GitHub repo page:
+   ```bash
+   gh repo edit OWNER/REPO --description "Short description of what this project does and key technologies used."
+   ```
+
+3. **Add topics** — Help discoverability:
+   ```bash
+   gh repo edit OWNER/REPO --add-topic nextjs --add-topic typescript --add-topic ai
+   ```
+   Add 5-10 relevant topics based on the tech stack and domain.
+
+### 5.3 Recommended Workflow
 
 ```
 /advise [feature] → pick option → build → /updatenow → commit → repeat
 ```
 
-### 5.3 Cleanup
+### 5.4 Cleanup
 
 Tell the user:
 
@@ -253,3 +275,15 @@ Tell the user:
 > From now on, start each session with `/startnow`.
 
 **Mark Phase 5 done. Stop reading this file in future sessions.**
+
+---
+
+## Appendix: Post-Bootstrap Checklist
+
+Things to do after you start building (not during bootstrap):
+
+- [ ] Update README.md as the project evolves (new features, architecture changes)
+- [ ] Update GitHub repo description if the project scope changes
+- [ ] Add a `.gitignore` appropriate for your stack
+- [ ] Set up CI/CD if needed (GitHub Actions, Railway auto-deploy)
+- [ ] Run `/audit` after first deploy to check security, cost, and performance
