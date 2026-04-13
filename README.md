@@ -2,6 +2,36 @@
 
 A battle-tested bootstrap kit for starting new projects with [Claude Code](https://claude.ai/claude-code). Fork this repo, run `StartHere.md`, and go from blank folder to fully scaffolded project in one session.
 
+Built from patterns extracted across 10+ real projects — web apps, construction planning, career prep, and AI content studios. Not theoretical. Every pattern earned its place by surviving real production use.
+
+---
+
+## Philosophy: You Are the Architect
+
+This kit is built on one principle: **you make the decisions, Claude handles the execution.**
+
+```
+You (Human)                          Claude (AI)
+─────────────                        ──────────
+Vision & Goals          ──────>      Understands context via docs
+Architecture Decisions  ──────>      Executes within constraints
+Review & Course-Correct ──────>      Generates code, docs, plans
+Domain Expertise        ──────>      Handles boilerplate + research
+Quality Bar             ──────>      Follows your patterns consistently
+```
+
+This maps directly to what Andrej Karpathy calls [Agentic Engineering](https://addyosmani.com/blog/agentic-engineering/) — the structured successor to "vibe coding":
+
+| Agentic Engineering Principle | How This Kit Implements It |
+|-------------------------------|---------------------------|
+| **Plan** before prompting | PRD-first workflow — never code without a plan |
+| **Direct** with precision | Communication guide + doc references in every instruction |
+| **Review** rigorously | Build loop — test locally, review each sub-task |
+| **Test** systematically | `/audit` skill — security, cost, performance, quality |
+| **Own** the architecture | `/updatenow` — docs stay current, you stay in control |
+
+> **The difference between vibe coding and building real products is a system.** This kit is that system.
+
 ---
 
 ## What's Included
@@ -142,6 +172,49 @@ commit                 ← frequent, per sub-task
 
 ---
 
+## The Build Loop
+
+Every session follows the same pattern. This is the core workflow that makes AI-assisted development predictable:
+
+```
+/startnow              ← Load context (arch.md, CLAUDE.md, git status)
+    ↓
+Review feature index   ← Pick next P0 from PRD
+    ↓
+/advise [topic]        ← Research before architecture decisions
+    ↓
+Build the feature      ← One at a time, with doc references
+    ↓
+Test locally           ← Browser, terminal, whatever fits
+    ↓
+Commit                 ← After each sub-task, clear message
+    ↓
+/updatenow             ← Keep docs current
+    ↓
+Repeat
+```
+
+**Starting a new project:** `/newproject` → Fill PRD (2-3 rounds) → Scaffold arch.md → Customize skills → First commit
+
+**When something breaks:** `/l3 [error]` → Follow evidence → Minimal fix → Commit → `/updatenow`
+
+**Before launch:** `/audit security` → `/audit cost` → `/audit performance` → Fix top 3 → Deploy
+
+---
+
+## Learnings & Guides
+
+These guides are extracted from real project experience. Find them in `docs/meta/`:
+
+| Guide | What It Covers |
+|-------|---------------|
+| [Cheat Sheet](docs/meta/cheat-sheet.md) | 1-page quick reference — pin this |
+| [Communication Guide](docs/meta/communication-guide.md) | How to give Claude good instructions (bad vs good examples) |
+| [Anti-Patterns](docs/meta/anti-patterns.md) | 12 common mistakes and what to do instead |
+| [Token Budgets](docs/meta/token-budgets.md) | Line budgets for every doc type — keep Claude fast and focused |
+
+---
+
 ## Security Model
 
 This kit is designed with security as a first-class concern:
@@ -206,6 +279,18 @@ description: "[PrepRight] Load job tracker context — arch.md, feature docs, Su
 
 ---
 
+## Tutorial: Build Your First App
+
+New to this kit? Follow [TUTORIAL.md](TUTORIAL.md) — a guided walkthrough that takes you from zero to deployed app in about 2 hours. You'll exercise every skill and pattern the kit ships with.
+
+---
+
+## Managing Multiple Projects?
+
+If you're working on multiple projects in a single workspace, check out [claude-workspace-kit](https://github.com/gmarmat/claude-workspace-kit) — it adds workspace-level context management, cross-project skills, and a `/newproject` command that scaffolds new projects from this kit automatically.
+
+---
+
 ## Contributing
 
 Issues and PRs welcome. If you build something with this kit and improve the templates, share it back.
@@ -219,4 +304,3 @@ MIT
 ---
 
 **Created by [gmarmat](https://github.com/gmarmat)**
-Contact: gmarmat@outlook.com

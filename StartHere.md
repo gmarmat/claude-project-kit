@@ -135,6 +135,8 @@ Once the user provides a PRD:
 3. Suggest improvements — missing sections, risks
 4. Iterate — 2-3 rounds is normal
 
+> **PRDs evolve — that's normal.** Real projects go through 3-8 PRD versions as requirements get clearer. Don't try to make the first draft perfect. Get the vision right, then refine in later rounds as you learn from building. Each version gets more focused.
+
 Key sections to look for (suggest adding if missing):
 - Problem statement & target users
 - Core features (MVP scope)
