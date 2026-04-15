@@ -16,9 +16,20 @@
 <!-- Example: "Never use [SDK method] that creates/updates/deletes resources." -->
 
 ### Security Requirements
-<!-- Example: "All API routes must require authentication." -->
-<!-- Example: "Never commit secrets or .env files." -->
-<!-- Example: "RLS must be enabled on all database tables." -->
+
+**Non-negotiable defaults (keep these, add project-specific rules below):**
+
+- All API routes MUST require authentication unless explicitly marked public
+- Never commit secrets, .env files, or API keys
+- RLS MUST be enabled on all database tables (Supabase: `ALTER TABLE ... ENABLE ROW LEVEL SECURITY`)
+- Validate all user input at API boundaries (Zod, joi, or equivalent)
+- Use parameterized queries — never concatenate user input into SQL
+- Return generic error messages to clients — log details server-side only
+- Never expose stack traces, internal paths, or DB schema in error responses
+- Run `npm audit` (or equivalent) before every deploy
+
+<!-- CUSTOMIZE: Add project-specific security rules below -->
+<!-- Example: "All [Service] API interactions MUST be read-only." -->
 
 ### Code Conventions
 <!-- Example: "Use TypeScript strict mode." -->
