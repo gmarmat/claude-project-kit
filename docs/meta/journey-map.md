@@ -1,6 +1,6 @@
 # Vibe Coding Kit — Journey Map
 
-**Authors:** Guarav Marmat & Claude
+**Authors:** Gaurav Marmat & Claude
 **Last updated:** 2026-03-10
 
 > **Internal doc.** Ships with the kit in `docs/meta/` but is not referenced by StartHere.md or any skill. Safe to keep — won't surface during bootstrap. Use this to refine the kit and explain the flow to friends.
