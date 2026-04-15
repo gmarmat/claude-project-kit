@@ -137,52 +137,7 @@ Only ask questions that would materially change the recommendation. Skip if the 
 
 ### Phase 6: Document & Save
 
-**Save a detailed plan to:** `docs/plans/YYYY-MM-DD-topic-name.md`
-
-**Plan Document Structure:**
-```markdown
-# [Topic] — Research & Options
-
-## Executive Summary
-[2-3 sentences on what was researched and the recommendation]
-
-## Problem Statement
-[Clear description of the problem/need]
-
-## Research Findings
-[Key insights as bullets — 1-2 sentences each, with source ref number]
-
-## Options
-
-### Option A: [Name]
-[Detailed description, architecture, trade-offs]
-
-### Option B: [Name]
-[Detailed description, architecture, trade-offs]
-
-### Option C: [Name] (if applicable)
-[Detailed description, architecture, trade-offs]
-
-## Comparison Matrix
-[Full scoring table]
-
-## Recommendation
-[Which option and why, with caveats]
-
-## Risks & Mitigations
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| | | | |
-
-## Implementation Plan (for recommended option)
-[Phased steps if user proceeds]
-
-## Sources
-| # | Source | URL | Date | Relevance |
-|---|--------|-----|------|-----------|
-| 1 | [Name] | [URL] | YYYY-MM | 1-line what it proved |
-| 2 | [Name] | [URL] | YYYY-MM | 1-line what it proved |
-```
+Save to `docs/plans/YYYY-MM-DD-topic-name.md` with sections: Executive Summary, Problem Statement, Research Findings (with source refs), Options (A/B/C with trade-offs), Comparison Matrix, Recommendation, Risks & Mitigations table, Implementation Plan, Sources table (# / Source / URL / Date / Relevance).
 
 ### Phase 7: Next Steps
 
