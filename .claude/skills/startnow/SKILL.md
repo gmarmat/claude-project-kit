@@ -167,7 +167,7 @@ Scaffolding:
   | /updatenow | ✓ customized / ⚠ generic |
   | /advise | ✓ customized / ⚠ generic / ✗ missing |
 
-[If any items are ⚠ or ✗: "Run /newproject update [name] from workspace root to fill in gaps."]
+[If any items are ⚠ or ✗: "Some scaffolding is incomplete. Customize the generic skills by reading the kit templates and filling in CUSTOMIZE markers."]
 [If arch.md > 250 lines: "arch.md is [N] lines (limit: 300). Consider /localcompact."]
 
 What are we working on today?

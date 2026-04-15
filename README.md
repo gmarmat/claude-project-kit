@@ -194,7 +194,7 @@ Commit                 ← After each sub-task, clear message
 Repeat
 ```
 
-**Starting a new project:** `/newproject` → Fill PRD (2-3 rounds) → Scaffold arch.md → Customize skills → First commit
+**Starting a new project:** Fork this kit → Run `StartHere.md` → Fill PRD (2-3 rounds) → Scaffold arch.md → Customize skills → First commit
 
 **When something breaks:** `/l3 [error]` → Follow evidence → Minimal fix → Commit → `/updatenow`
 
