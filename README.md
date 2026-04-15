@@ -291,7 +291,7 @@ New to this kit? Follow [TUTORIAL.md](TUTORIAL.md) — a guided walkthrough that
 |-----|---------|
 | **claude-project-kit** (this repo) | Bootstrap **new** projects |
 | [claude-workspace-kit](https://github.com/gmarmat/claude-workspace-kit) | Manage **multi-project** workspaces |
-| [claude-project-rehab](https://github.com/gmarmat/claude-project-rehab) | Assess + upgrade **existing** projects |
+| [claude-project-rehab](https://github.com/gmarmat/claude-project-rehab) | Assess + upgrade **existing** projects, guide **new** ideas |
 | [claude-pm-kit](https://github.com/gmarmat/claude-pm-kit) | **PM Twin** — digital peer product manager, full product lifecycle |
 
 Each kit works independently. Together they cover the full journey from idea to launched product.
