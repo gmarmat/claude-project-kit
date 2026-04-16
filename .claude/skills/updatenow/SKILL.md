@@ -172,6 +172,25 @@ After reporting, check the arch.md line count. If > 250 lines, append this warni
 arch.md is [N] lines (limit: 300). Consider running /localcompact to trim.
 ```
 
+### Step 6: Check Workspace Context
+
+If this project is inside a workspace (a parent directory with its own `CLAUDE.md`):
+
+1. Read the parent `CLAUDE.md` — find this project's entry in the Projects table
+2. Check if any of these changed this session:
+   - Project description (does the table entry still match what the project does?)
+   - Tech stack (did the stack change in a way the workspace should know?)
+   - Status (did the project go from "planned" to "active" or "scaffolded" to "shipped"?)
+   - Skill count (did you add or remove skills?)
+3. If anything is stale, flag it:
+   ```
+   Workspace note: This project's entry in the workspace CLAUDE.md may be
+   outdated. Consider running /updatenow from the workspace root to sync.
+   [Specific: description says "X" but project is now "Y"]
+   ```
+
+**Don't auto-update workspace docs** — just flag. The workspace `/updatenow` handles the actual update.
+
 ## Important Notes
 
 - NEVER delete existing content unless it's factually wrong or superseded
