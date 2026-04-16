@@ -1,6 +1,6 @@
 # App Types — Traditional vs Agentic
 
-**Authors:** Gaurav Marmat & Claude
+**Authors:** gmarmat
 **Last updated:** 2026-03-10
 
 > Teaching reference for explaining what kind of app best suits a friend's needs.
