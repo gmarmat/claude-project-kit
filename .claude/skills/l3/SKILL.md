@@ -7,7 +7,7 @@ allowed-tools: Read, Bash, Glob, Grep
 ---
 
 <!-- CUSTOMIZE: Update the YAML description above to start with "[ProjectName]" prefix.
-     Example: description: "[PrepRight] Debug job tracker issues — API, Supabase, auth, UI." -->
+     Example: description: "[TaskApp] Debug task tracker issues — API, Supabase, auth, UI." -->
 
 # L3 Investigation Agent
 

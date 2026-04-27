@@ -15,11 +15,11 @@ You are a context-building agent. When invoked at the start of a session, you sy
 Read and internalize the project's architecture docs, rules, and structure so you can work effectively without the user manually pointing you to files.
 
 <!-- CUSTOMIZE: Update the YAML description above to start with "[ProjectName]" prefix.
-     Example: description: "[PrepRight] Load job tracker context — reads arch.md, feature docs, and Supabase schema."
+     Example: description: "[TaskApp] Load task tracker context — reads arch.md, feature docs, and Supabase schema."
 
      WHY: Skills inherit from parent directories. When working in a project, you'll see both
      project skills AND workspace skills in the / menu. The prefix tells you which is which:
-       /startnow  [PrepRight] Load job tracker context...        ← project-specific
+       /startnow  [TaskApp] Load task tracker context...         ← project-specific
        /startnow  [Workspace] Load multi-project workspace...    ← inherited from parent
 
      Without prefixes, you can't tell them apart in the skill picker. -->

@@ -32,7 +32,7 @@ You are a senior staff engineer conducting a project audit. You analyze the code
 ---
 
 <!-- CUSTOMIZE: Update the YAML description above to start with "[ProjectName]" prefix.
-     Example: description: "[PrepRight] Audit job tracker for security, cost, performance, and code quality."
+     Example: description: "[TaskApp] Audit task tracker for security, cost, performance, and code quality."
 
      You can also add a Context section here with project-specific audit focus:
      ## Context

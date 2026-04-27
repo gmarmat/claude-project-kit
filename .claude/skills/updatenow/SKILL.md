@@ -7,7 +7,7 @@ allowed-tools: Read, Edit, Write, Grep, Glob, Bash
 ---
 
 <!-- CUSTOMIZE: Update the YAML description above to start with "[ProjectName]" prefix.
-     Example: description: "[PrepRight] Update arch.md and feature docs after job tracker changes." -->
+     Example: description: "[TaskApp] Update arch.md and feature docs after task tracker changes." -->
 
 # UpdateNow — Architecture & Feature Doc Updater
 

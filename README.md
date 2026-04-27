@@ -2,7 +2,7 @@
 
 A battle-tested bootstrap kit for starting new projects with [Claude Code](https://claude.ai/claude-code). Fork this repo, run `StartHere.md`, and go from blank folder to fully scaffolded project in one session.
 
-Built from patterns extracted across 10+ real projects — web apps, construction planning, career prep, and AI content studios. Not theoretical. Every pattern earned its place by surviving real production use.
+Built from patterns extracted across 10+ real projects across multiple domains. Not theoretical. Every pattern earned its place by surviving real production use.
 
 ---
 
@@ -20,7 +20,7 @@ Domain Expertise        ──────>      Handles boilerplate + research
 Quality Bar             ──────>      Follows your patterns consistently
 ```
 
-This maps directly to what Andrej Karpathy calls [Agentic Engineering](https://addyosmani.com/blog/agentic-engineering/) — the structured successor to "vibe coding":
+This maps directly to the [Agentic Engineering](https://addyosmani.com/blog/agentic-engineering/) approach — the structured successor to "vibe coding":
 
 | Agentic Engineering Principle | How This Kit Implements It |
 |-------------------------------|---------------------------|
@@ -274,7 +274,7 @@ Every skill has `<!-- CUSTOMIZE -->` markers showing exactly what to change for 
 description: Load project context at the start of a session.
 
 # After (your project)
-description: "[PrepRight] Load job tracker context — arch.md, feature docs, Supabase schema."
+description: "[TaskApp] Load task tracker context — arch.md, feature docs, Supabase schema."
 ```
 
 ---
@@ -290,8 +290,8 @@ New to this kit? Follow [TUTORIAL.md](TUTORIAL.md) — a guided walkthrough that
 | Kit | Purpose |
 |-----|---------|
 | **claude-project-kit** (this repo) | Bootstrap **new** projects |
-| [claude-workspace-kit](https://github.com/gmarmat/claude-workspace-kit) | Manage **multi-project** workspaces |
-| [claude-project-rehab](https://github.com/gmarmat/claude-project-rehab) | Assess + upgrade **existing** projects, guide **new** ideas |
+| [claude-workspace-kit](https://github.com/gmarmat/claude-workspace-kit) *(coming soon)* | Manage **multi-project** workspaces |
+| [claude-project-rehab](https://github.com/gmarmat/claude-project-rehab) *(coming soon)* | Assess + upgrade **existing** projects, guide **new** ideas |
 | [claude-pm-kit](https://github.com/gmarmat/claude-pm-kit) | **PM Twin** — digital peer product manager, full product lifecycle |
 
 Each kit works independently. Together they cover the full journey from idea to launched product.
