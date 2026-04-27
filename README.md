@@ -42,7 +42,7 @@ Skills are Claude Code's slash commands. Copy these into your project's `.claude
 
 | Skill | What It Does |
 |-------|-------------|
-| `/startnow` | Loads project context at session start — reads arch.md, CLAUDE.md, feature docs, config files |
+| `/startnow` | Loads project context at session start — reads arch.md, CLAUDE.md, feature docs, config files, and surfaces any new upstream commits since your last session |
 | `/updatenow` | Updates architecture docs and feature docs after code changes |
 | `/advise` | Research agent — presents 2-3 options with costs, risks, and a recommendation |
 | `/l3` | Debug agent — root-cause investigation with hypotheses, evidence, and fix |

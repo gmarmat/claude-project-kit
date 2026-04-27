@@ -1,6 +1,6 @@
 ---
 name: startnow
-description: Load project context at the start of a session. Reads architecture docs, project rules, and structure to build full working context before coding begins.
+description: Load project context at the start of a session. Reads architecture docs, project rules, and structure, and surfaces any new upstream commits since your last session.
 argument-hint:
 disable-model-invocation: false
 allowed-tools: Read, Glob, Grep, Bash
@@ -32,6 +32,21 @@ Read and internalize the project's architecture docs, rules, and structure so yo
 2. Run `git remote -v` to identify the repository.
 3. Run `git log --oneline -5` to see recent activity.
 4. Run `git branch --show-current` to know the active branch.
+
+### Step 1b: Check for Upstream Activity (Teammate / Cross-Session Awareness)
+
+This step makes `/startnow` useful both for solo work resumed after time away AND for projects shared with collaborators. Skip silently if any sub-step fails (no remote, no upstream tracking, offline, etc.) — the skill must never error out because of network or remote state.
+
+1. **If `git remote -v` showed any remote in Step 1**, run `git fetch --quiet` to update remote refs. Ignore failures.
+2. Run `git log --oneline HEAD..@{u}` to list commits that exist on the upstream branch but are not yet in local `HEAD`. These are commits added since you last pulled — by you on another machine, or by a collaborator.
+3. If step 2 returned any commits, run `git log --name-only HEAD..@{u}` (or `git diff --name-only HEAD..@{u}`) to capture which files changed. Pay particular attention to:
+   - `docs/arch.md` (and any `arch.md` / `architecture.md` variants)
+   - `CLAUDE.md`
+   - Anything under `docs/features/`
+   - `.claude/skills/*/SKILL.md`
+4. Note the authors of upstream commits (`git log --pretty=format:'%h %an %s' HEAD..@{u}`) so the summary can credit collaborators.
+
+If the project has no remote, no upstream tracking, or no new upstream commits, all of the above is a no-op and produces an empty result. Surface that as "no new upstream activity" in the summary rather than skipping the line entirely — the *absence* of upstream changes is itself useful information.
 
 ### Step 2: Read Architecture Docs
 
@@ -150,6 +165,8 @@ Project: [name] ([repo URL])
 Branch:  [current branch]
 Stack:   [framework, language, DB, hosting]
 Recent:  [last 3-5 commits summarized in one line each]
+Upstream: [N new commits since your last session, by [authors]]
+          [or "no new upstream activity" / "no remote configured"]
 
 Docs:
   - arch.md (vX.Y, updated YYYY-MM-DD, [N] lines)
@@ -167,7 +184,10 @@ Scaffolding:
   | /updatenow | ✓ customized / ⚠ generic |
   | /advise | ✓ customized / ⚠ generic / ✗ missing |
 
-[If any items are ⚠ or ✗: "Some scaffolding is incomplete. Customize the generic skills by reading the kit templates and filling in CUSTOMIZE markers."]
+[If upstream commits touched arch.md / CLAUDE.md / docs/features/ / .claude/skills/:
+  "Heads-up: project context shifted upstream. Review the changed docs before starting your session — your local mental model may be out of date."]
+
+[If any scaffolding items are ⚠ or ✗: "Some scaffolding is incomplete. Customize the generic skills by reading the kit templates and filling in CUSTOMIZE markers."]
 [If arch.md > 250 lines: "arch.md is [N] lines (limit: 300). Consider /localcompact."]
 
 What are we working on today?
@@ -181,3 +201,4 @@ What are we working on today?
 - If you find multiple architecture docs, read the most detailed one and note the others
 - Keep the summary concise — the user wants to start working, not read a report
 - If the project has no architecture doc, say so and suggest creating one with `/advise`
+- The upstream-activity check (Step 1b) is read-only against the remote (`git fetch` only updates local refs, never modifies remote). Always run silently — if the network is down or the remote is unreachable, skip without surfacing an error
